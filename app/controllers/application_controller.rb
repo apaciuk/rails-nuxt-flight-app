@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  # Prevent CSRF attacks by using :null_session
-  protect_from_forgery with: :null_session
+  include ActionController::RequestForgeryProtection
+  protect_from_forgery with: :exception, unless: -> { request.format.json? }
   include DeviseTokenAuth::Concerns::SetUserByToken
   before_action :configure_permitted_parameters, if: :devise_controller?
   respond_to :json
