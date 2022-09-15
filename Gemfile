@@ -48,7 +48,7 @@ group :development do
   # gem "spring"
 end
 
-gem 'active_model_serializers', '~> 0.10.13'
+gem 'fast_jsonapi'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'devise_token_auth', '~> 1.2', '>= 1.2.1'
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.5'

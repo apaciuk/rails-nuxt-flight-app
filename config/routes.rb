@@ -9,14 +9,14 @@ Rails.application.routes.draw do
       namespace :v1 do
         resources :registration, only: ['create']
         resources :sessions, only: %w[create destroy]
+        resources :airlines, param: :slug
+        resources :reviews, only: %w[create destroy]
         # resources :posts
       end
     end
   end
 
-  # devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  
+  root "pages#index"
+  get '*path', to: 'pages#index', via: :all
 end
