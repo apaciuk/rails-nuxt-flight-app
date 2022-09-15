@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  # Uncomment this line if using Simple Token Auth
-  # acts_as_token_authentication_handler_for User
+  # Prevent CSRF attacks by using :null_session
+  protect_from_forgery with: :null_session
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  respond_to :json
   around_action :handle_errors
 
   def render_api_success(serializer, obj, _options = {})
@@ -10,7 +13,7 @@ class ApplicationController < ActionController::API
   end
 
   def render_api_error(messages, code)
-    data = { errors: { code: code, details: Array.wrap(messages) } }
+    data = { errors: { code:, details: Array.wrap(messages) } }
     render json: data, status: code
   end
 
