@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
-  def index
+  def index 
+    render json: { status: 200, message: "Rails API" }
   end 
   
 end
