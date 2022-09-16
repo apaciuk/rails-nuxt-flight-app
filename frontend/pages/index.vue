@@ -6,5 +6,3 @@
     <div class="btn btn-warning">Warning</div>
 </div>
 </template>
-
-
